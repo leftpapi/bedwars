@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KITDLE — Guess the BedWars Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-block"></span>
+    <h1>KIT<span class="brand-accent">DLE</span></h1>
+  </div>
+  <div class="mode-toggle" role="tablist">
+    <button class="mode-btn active" data-mode="daily" role="tab">Daily</button>
+    <button class="mode-btn" data-mode="unlimited" role="tab">Unlimited</button>
+  </div>
+  <button class="icon-btn" id="helpBtn" aria-label="How to play">?</button>
+</header>
+
+<main>
+
+  <section class="intro" id="intro">
+    <p><strong>Guess today's BedWars kit.</strong> Every guess compares Class, Obtain Method, First Letter, Name Length and Word Count — get all five gold to win.</p>
+  </section>
+
+  <section class="guess-box">
+    <div class="autocomplete-wrap">
+      <input type="text" id="guessInput" placeholder="Type a kit name…" autocomplete="off" spellcheck="false">
+      <button id="guessBtn">Guess</button>
+      <div id="suggestions" class="suggestions"></div>
+    </div>
+    <div class="meta-row">
+      <span id="attemptsLabel">0 guesses</span>
+      <span id="streakLabel" class="streak">🔥 streak: 0</span>
+    </div>
+  </section>
+
+  <section class="board" id="board">
+    <div class="board-header" id="boardHeader">
+      <div class="col col-kit">Kit</div>
+      <div class="col">Class</div>
+      <div class="col">Obtain</div>
+      <div class="col">1st Letter</div>
+      <div class="col">Length</div>
+      <div class="col">Words</div>
+    </div>
+    <div id="rows" class="rows"></div>
+  </section>
+
+  <section id="winPanel" class="win-panel hidden">
+    <div class="win-card">
+      <div class="win-bed">🛏️</div>
+      <h2 id="winTitle">BED BROKEN!</h2>
+      <p id="winSub"></p>
+      <div class="win-actions">
+        <button id="shareBtn">Copy Result</button>
+        <button id="newGameBtn" class="hidden">Play Again</button>
+      </div>
+      <p id="nextDaily" class="hidden"></p>
+    </div>
+  </section>
+
+</main>
+
+<div id="helpModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="modal-close" id="closeHelp">×</button>
+    <h2>How to play</h2>
+    <p>Guess the mystery BedWars kit. After each guess, every column lights up:</p>
+    <ul>
+      <li><span class="chip gold">GOLD</span> — exact match</li>
+      <li><span class="chip silver">SILVER</span> — close (length is off by ≤2, or arrow shows higher/lower)</li>
+      <li><span class="chip stone">STONE</span> — no match</li>
+    </ul>
+    <p><strong>Length</strong> and <strong>Words</strong> show an arrow (↑/↓) telling you if the answer's value is higher or lower than your guess.</p>
+    <p><strong>Daily</strong> mode gives everyone the same kit each day, resetting at midnight. <strong>Unlimited</strong> mode is a random kit every time — play as much as you want.</p>
+  </div>
+</div>
+
+<script src="kits_data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
